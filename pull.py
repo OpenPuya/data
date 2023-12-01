@@ -10,5 +10,3 @@ if __name__ == '__main__':
     for file in response:
         # 下载文件
         op.download(file['Key'])
-        print(f'Download {file["Key"]}')
-

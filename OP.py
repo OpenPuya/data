@@ -1,6 +1,9 @@
 import json
 import boto3
 import os
+import logging
+
+logging.basicConfig(level=logging.INFO,format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 class OpenPuya:
     _config_path = './__config.json'
@@ -21,11 +24,12 @@ class OpenPuya:
             (self.base_path+'/').replace('\\','/').replace('./',''),
             ''
         )
-        print(f'Upload {local_path} to {remote_path}')
+        logging.info(f'upload {local_path} to {remote_path}')
         self.s3.upload_file(local_path,self._bucket_name,remote_path)
 
     def download(self,remote_path:str):
         local_path = os.path.join(self.base_path,remote_path)
+        logging.info(f'download {remote_path} to {local_path}')
         self.s3.download_file(self._bucket_name,remote_path,local_path)
 
     def get_all_file(self):
