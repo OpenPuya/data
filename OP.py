@@ -30,6 +30,9 @@ class OpenPuya:
     def download(self,remote_path:str):
         local_path = os.path.join(self.base_path,remote_path)
         logging.info(f'download {remote_path} to {local_path}')
+        # 如果文件夹不存在则创建
+        if not os.path.exists(os.path.dirname(local_path)):
+            os.makedirs(os.path.dirname(local_path))
         self.s3.download_file(self._bucket_name,remote_path,local_path)
 
     def get_all_file(self):
