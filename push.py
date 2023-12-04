@@ -35,6 +35,21 @@ markdown_dict = [
         "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
         "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
     },
+    {
+        "name": "PY32F040",
+        "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
+        "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
+    },
+    {
+        "name": "PY32L020",
+        "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
+        "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
+    },
+    {
+        "name": "PY32F403",
+        "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
+        "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
+    },
 ]
 
 i18n_rules = [
