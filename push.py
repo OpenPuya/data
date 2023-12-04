@@ -5,14 +5,18 @@ import time
 
 include_path = [
     "Datasheet&Reference manual", # 数据手册列表
-
+    "Application Note"
 ]
 
 markdown_dict = [
     {
         "name": "PY32F030",
-        "path": ["Datasheet&Reference manual"]
-    }
+        "path": ["Datasheet&Reference manual", "Application Note"]
+    },
+    {
+        "name": "PY32F003",
+        "path": ["Datasheet&Reference manual", "Application Note"]
+    },
 ]
 
 url = "https://download.py32.org/"
@@ -21,7 +25,7 @@ def get_ignore() -> list:
     with open('.gitignore') as f:
         return f.readlines()
 
-def markdown_file(f:str) -> bool:
+def markdown_file(f:str,series:dict) -> bool:
     """
     判断markdown_dict中的文件是否需要生成markdown，去掉忽略列表中的文件，已经仅匹配markdown_dict中包含name的文件
     :param f:
@@ -31,9 +35,8 @@ def markdown_file(f:str) -> bool:
     for ignore in gitignore:
         if fnmatch.fnmatch(f, ignore):
             return False
-    for series in markdown_dict:
-        if series['name'] in f:
-            return True
+    if series['name'] in f:
+        return True
     return False
 
 def get_all_file() -> dict:
@@ -99,7 +102,7 @@ def markdown():
             md_str += f"|文件名|更新时间|大小|下载地址|\n"
             md_str += f"|---|---|---|---|\n"
             for f in file:
-                if not markdown_file(f):
+                if not markdown_file(f,series):
                     continue
                 file_name = f
                 file_path = url + url_encode(path + '/' + f)
