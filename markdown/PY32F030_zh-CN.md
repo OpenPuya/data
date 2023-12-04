@@ -26,3 +26,10 @@
 |ANSA-1001 PY32F030系列应用指南 V1.2.pdf|2022-10-14 15:59:57|351.2 K|<https://download.py32.org/Application%20Note/ANSA-1001%20PY32F030%E7%B3%BB%E5%88%97%E5%BA%94%E7%94%A8%E6%8C%87%E5%8D%97%C2%A0V1.2.pdf>|
 |ANSA-1002 PY32F030系列中断向量映射应用指南 V1.0.pdf|2022-11-14 11:36:21|955.3 K|<https://download.py32.org/Application%20Note/ANSA-1002%20PY32F030%E7%B3%BB%E5%88%97%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E6%98%A0%E5%B0%84%E5%BA%94%E7%94%A8%E6%8C%87%E5%8D%97%C2%A0V1.0.pdf>|
 |PY32F030_PY32F003 FAQ V1.0.pdf|2022-08-22 15:21:37|1.0 M|<https://download.py32.org/Application%20Note/PY32F030_PY32F003%20FAQ%20V1.0.pdf>|
+## PACK
+|文件名|更新时间|大小|下载地址|
+|---|---|---|---|
+|IAR\Puya.PY32F0xx_IAR_DFP.0.0.2.rar|2022-10-20 17:15:59|104.9 K|<https://download.py32.org/PACK/IAR%5CPuya.PY32F0xx_IAR_DFP.0.0.2.rar>|
+|IAR\如何使用IAR开发调试PY32 MCU V1.0.pdf|2022-10-20 17:15:59|1.3 M|<https://download.py32.org/PACK/IAR%5C%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8IAR%E5%BC%80%E5%8F%91%E8%B0%83%E8%AF%95PY32%20MCU%20V1.0.pdf>|
+|MDK\Puya.PY32F0xx_DFP.1.1.0.pack|2022-10-20 17:15:59|19.3 M|<https://download.py32.org/PACK/MDK%5CPuya.PY32F0xx_DFP.1.1.0.pack>|
+|MDK\PY32F0xx_DFP User Manual Rev.1.0.pdf|2022-10-20 17:15:59|1.3 M|<https://download.py32.org/PACK/MDK%5CPY32F0xx_DFP%20User%20Manual%20Rev.1.0.pdf>|

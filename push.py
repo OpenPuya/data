@@ -4,22 +4,26 @@ import fnmatch
 import time
 
 include_path = [
-    "Datasheet&Reference manual", # 数据手册列表
-    "Application Note"
+    "Datasheet&Reference manual",  # 数据手册列表
+    "Application Note",
+    "PACK",
 ]
 
 markdown_dict = [
     {
         "name": "PY32F030",
-        "path": ["Datasheet&Reference manual", "Application Note"]
+        "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
+        "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
     },
     {
         "name": "PY32F003",
-        "path": ["Datasheet&Reference manual", "Application Note"]
+        "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
+        "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
     },
     {
         "name": "PY32F002A",
-        "path": ["Datasheet&Reference manual", "Application Note"]
+        "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
+        "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
     },
 ]
 
@@ -36,11 +40,13 @@ i18n_rules = [
 
 url = "https://download.py32.org/"
 
+
 def get_ignore() -> list:
     with open('.gitignore') as f:
         return f.readlines()
 
-def markdown_file(f:str,series:dict,i18n:str="en-US") -> bool:
+
+def markdown_file(f: str, series: dict, i18n: str = "en-US") -> bool:
     """
     判断markdown_dict中的文件是否需要生成markdown，去掉忽略列表中的文件，已经仅匹配markdown_dict中包含name的文件
     :param f:
@@ -60,23 +66,35 @@ def markdown_file(f:str,series:dict,i18n:str="en-US") -> bool:
                         return True
     return False
 
-def get_all_file() -> dict:
+
+def get_all_file(user_path:list=include_path) -> dict:
     all_file = {}
-    for path in include_path:
+    for path in user_path:
         all_file[path] = []
         file_path = os.path.join(OpenPuya.base_path, path)
         for file in os.listdir(file_path):
             # 判断是否在忽略列表中，支持通配符
             if any(fnmatch.fnmatch(file, ignore) for ignore in get_ignore()):
                 continue
-            all_file[path].append(file)
+            if os.path.isfile(os.path.join(file_path, file)):
+                all_file[path].append(file)
+            else:
+                for root, dirs, files in os.walk(os.path.join(file_path, file)):
+                    for f in files:
+                        if any(fnmatch.fnmatch(file, ignore) for ignore in get_ignore()):
+                            continue
+                        all_file[path].append(os.path.join(root, f).replace(file_path + "\\", ""))
+
     return all_file
-def push(op:OpenPuya):
+
+
+def push(op: OpenPuya):
     all_file = get_all_file()
     for path in all_file:
         for file in all_file[path]:
             upload_path = os.path.join(op.base_path, path, file)
             op.upload(upload_path)
+
 
 def bytes2human(n):
     """
@@ -88,12 +106,13 @@ def bytes2human(n):
     symbols = ('K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y')
     prefix = {}
     for i, s in enumerate(symbols):
-        prefix[s] = 1 << (i+1)*10
+        prefix[s] = 1 << (i + 1) * 10
     for s in reversed(symbols):
         if n >= prefix[s]:
             value = float(n) / prefix[s]
             return '%.1f %s' % (value, s)
     return '%.1f B' % (n)
+
 
 def time2human(n):
     """
@@ -103,7 +122,8 @@ def time2human(n):
     """
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(n))
 
-def url_encode(url:str) -> str:
+
+def url_encode(url: str) -> str:
     """
     将url中的特殊字符转换为url编码
     :param url:
@@ -111,6 +131,8 @@ def url_encode(url:str) -> str:
     """
     import urllib.parse
     return urllib.parse.quote(url)
+
+
 def markdown():
     all_file = get_all_file()
     for rule in i18n_rules:
@@ -138,7 +160,12 @@ def markdown():
                         md_str += f"|---|---|---|---|\n"
 
                 for f in file:
-                    if not markdown_file(f,series,rule['i18n']):
+                    isBreak = False
+                    for not_rule_path in series['not_rule_path']:
+                        if not_rule_path in path:
+                            isBreak = True
+                            break
+                    if not markdown_file(f, series, rule['i18n']) and not isBreak:
                         continue
                     file_name = f
                     file_path = url + url_encode(path + '/' + f)
@@ -148,14 +175,13 @@ def markdown():
             markdown_path = os.path.join("markdown", f"{series_name}_{rule['i18n']}.md")
             if not os.path.exists("markdown"):
                 os.mkdir("markdown")
-            with open(markdown_path, 'w',encoding="utf-8") as f:
+            with open(markdown_path, 'w', encoding="utf-8") as f:
                 f.write(md_str)
 
 
 if __name__ == '__main__':
     op = OpenPuya()
     # 上传本地的文件到对象存储
-    push(op)
+    # push(op)
     # 生成markdown
     markdown()
-
