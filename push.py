@@ -25,6 +25,16 @@ markdown_dict = [
         "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
         "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
     },
+    {
+        "name": "PY32F002B",
+        "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
+        "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
+    },
+    {
+        "name": "PY32F07x",
+        "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
+        "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
+    },
 ]
 
 i18n_rules = [
@@ -60,8 +70,10 @@ def markdown_file(f: str, series: dict, i18n: str = "en-US") -> bool:
     for rule in i18n_rules:
         if rule['i18n'] == i18n:
             for suffix in rule['suffix']:
-                # 只要是文件名中包含了i18n的字符串就返回True
-                if series['name'] in f:
+                # 去掉name末尾的x后缀，只去后缀
+                name = series['name'].replace('x', '', -1)
+                if name in f:
+                    # 只要是文件名中包含了i18n的字符串就返回True
                     if suffix in f or i18n == 'zh-CN':
                         return True
     return False
@@ -182,6 +194,6 @@ def markdown():
 if __name__ == '__main__':
     op = OpenPuya()
     # 上传本地的文件到对象存储
-    # push(op)
+    push(op)
     # 生成markdown
     markdown()
