@@ -23,13 +23,24 @@ markdown_dict = [
     },
 ]
 
+i18n_rules = [
+    {
+        "i18n": "zh-CN",
+        "suffix": ["CN", "zh"]
+    },
+    {
+        "i18n": "en-US",
+        "suffix": ["EN"]
+    }
+]
+
 url = "https://download.py32.org/"
 
 def get_ignore() -> list:
     with open('.gitignore') as f:
         return f.readlines()
 
-def markdown_file(f:str,series:dict) -> bool:
+def markdown_file(f:str,series:dict,i18n:str="en-US") -> bool:
     """
     判断markdown_dict中的文件是否需要生成markdown，去掉忽略列表中的文件，已经仅匹配markdown_dict中包含name的文件
     :param f:
@@ -39,8 +50,14 @@ def markdown_file(f:str,series:dict) -> bool:
     for ignore in gitignore:
         if fnmatch.fnmatch(f, ignore):
             return False
-    if series['name'] in f:
-        return True
+
+    for rule in i18n_rules:
+        if rule['i18n'] == i18n:
+            for suffix in rule['suffix']:
+                # 只要是文件名中包含了i18n的字符串就返回True
+                if series['name'] in f:
+                    if suffix in f or i18n == 'zh-CN':
+                        return True
     return False
 
 def get_all_file() -> dict:
@@ -96,28 +113,43 @@ def url_encode(url:str) -> str:
     return urllib.parse.quote(url)
 def markdown():
     all_file = get_all_file()
-    for series in markdown_dict:
-        md_str = ""
-        series_name = series['name']
-        series_path = series['path']
-        for path in series_path:
-            file = all_file[path]
-            md_str += f"## {path}\n"
-            md_str += f"|文件名|更新时间|大小|下载地址|\n"
-            md_str += f"|---|---|---|---|\n"
-            for f in file:
-                if not markdown_file(f,series):
-                    continue
-                file_name = f
-                file_path = url + url_encode(path + '/' + f)
-                file_size = bytes2human(os.path.getsize(os.path.join(OpenPuya.base_path, path, f)))
-                file_time = time2human(os.path.getmtime(os.path.join(OpenPuya.base_path, path, f)))
-                md_str += f"|{file_name}|{file_time}|{file_size}|<{file_path}>|\n"
-        markdown_path = os.path.join("markdown", series_name + ".md")
-        if not os.path.exists("markdown"):
-            os.mkdir("markdown")
-        with open(markdown_path, 'w',encoding="utf-8") as f:
-            f.write(md_str)
+    for rule in i18n_rules:
+
+        for series in markdown_dict:
+            md_str = ""
+            series_name = series['name']
+            series_path = series['path']
+            for path in series_path:
+                file = all_file[path]
+                match rule['i18n']:
+                    case "zh-CN":
+                        md_str += f"## {path}\n"
+                        md_str += f"|文件名|更新时间|大小|下载地址|\n"
+                        md_str += f"|---|---|---|---|\n"
+
+                    case "en-US":
+                        md_str += f"## {path}\n"
+                        md_str += f"|File Name|Update Time|Size|Download Link|\n"
+                        md_str += f"|---|---|---|---|\n"
+
+                    case _:
+                        md_str += f"## {path}\n"
+                        md_str += f"|文件名|更新时间|大小|下载地址|\n"
+                        md_str += f"|---|---|---|---|\n"
+
+                for f in file:
+                    if not markdown_file(f,series,rule['i18n']):
+                        continue
+                    file_name = f
+                    file_path = url + url_encode(path + '/' + f)
+                    file_size = bytes2human(os.path.getsize(os.path.join(OpenPuya.base_path, path, f)))
+                    file_time = time2human(os.path.getmtime(os.path.join(OpenPuya.base_path, path, f)))
+                    md_str += f"|{file_name}|{file_time}|{file_size}|<{file_path}>|\n"
+            markdown_path = os.path.join("markdown", f"{series_name}_{rule['i18n']}.md")
+            if not os.path.exists("markdown"):
+                os.mkdir("markdown")
+            with open(markdown_path, 'w',encoding="utf-8") as f:
+                f.write(md_str)
 
 
 if __name__ == '__main__':
