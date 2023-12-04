@@ -17,6 +17,10 @@ markdown_dict = [
         "name": "PY32F003",
         "path": ["Datasheet&Reference manual", "Application Note"]
     },
+    {
+        "name": "PY32F002A",
+        "path": ["Datasheet&Reference manual", "Application Note"]
+    },
 ]
 
 url = "https://download.py32.org/"
