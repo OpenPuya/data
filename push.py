@@ -4,13 +4,14 @@ import fnmatch
 import time
 
 include_path = [
-    "datasheet", # 数据手册列表
+    "Datasheet&Reference manual", # 数据手册列表
+
 ]
 
 markdown_dict = [
     {
         "name": "PY32F030",
-        "path": ["datasheet"]
+        "path": ["Datasheet&Reference manual"]
     }
 ]
 
@@ -101,7 +102,7 @@ def markdown():
                 if not markdown_file(f):
                     continue
                 file_name = f
-                file_path = url + path + '/' + url_encode(f)
+                file_path = url + url_encode(path + '/' + f)
                 file_size = bytes2human(os.path.getsize(os.path.join(OpenPuya.base_path, path, f)))
                 file_time = time2human(os.path.getmtime(os.path.join(OpenPuya.base_path, path, f)))
                 md_str += f"|{file_name}|{file_time}|{file_size}|<{file_path}>|\n"
