@@ -134,7 +134,7 @@ def markdown():
                             size = bytes2human(os.path.getsize(os.path.join(OpenPuya.base_path, group, file)))
                             url = base_url + url_encode(group) + "/" + url_encode(file)
                             f.write(
-                                "| " + name + " | " + update_time + " | " + size + " | " + url + " |\n"
+                                f"| {name} | {update_time} | {size} | <{url}> |\n"
                             )
                 logging.info("生成markdown文件：" + file_name)
 
