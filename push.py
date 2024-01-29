@@ -3,67 +3,14 @@ import os
 import fnmatch
 import time
 
+base_url = "https://download.py32.org/"
+
 include_path = [
-    "Datasheet&Reference manual",  # 数据手册列表
     "Application Note",
-    "PACK",
+    "Datasheet&Reference manual",
+    "PACK_IAR",
+    "PACK_MDK",
 ]
-
-markdown_dict = [
-    {
-        "name": "PY32F030",
-        "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
-        "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
-    },
-    {
-        "name": "PY32F003",
-        "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
-        "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
-    },
-    {
-        "name": "PY32F002A",
-        "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
-        "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
-    },
-    {
-        "name": "PY32F002B",
-        "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
-        "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
-    },
-    {
-        "name": "PY32F07x",
-        "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
-        "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
-    },
-    {
-        "name": "PY32F040",
-        "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
-        "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
-    },
-    {
-        "name": "PY32L020",
-        "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
-        "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
-    },
-    {
-        "name": "PY32F403",
-        "path": ["Datasheet&Reference manual", "Application Note", "PACK"],
-        "not_rule_path": ["PACK"]  # 不需要使用规则的文件夹
-    },
-]
-
-i18n_rules = [
-    {
-        "i18n": "zh-CN",
-        "suffix": ["CN", "zh"]
-    },
-    {
-        "i18n": "en-US",
-        "suffix": ["EN"]
-    }
-]
-
-url = "https://download.py32.org/"
 
 
 def get_ignore() -> list:
@@ -94,7 +41,7 @@ def markdown_file(f: str, series: dict, i18n: str = "en-US") -> bool:
     return False
 
 
-def get_all_file(user_path:list=include_path) -> dict:
+def get_all_file(user_path: list = include_path) -> dict:
     all_file = {}
     for path in user_path:
         all_file[path] = []
@@ -162,48 +109,34 @@ def url_encode(url: str) -> str:
 
 def markdown():
     all_file = get_all_file()
-    for rule in i18n_rules:
+    # 递归遍历markdown目录下的所有文件
+    markdown_path = os.path.join("./", 'markdown')
+    for dir in os.listdir(markdown_path):
+        if os.path.isdir(os.path.join(markdown_path, dir)):
+            # 读取config.json
+            with open(os.path.join(markdown_path, dir, "config.json"), encoding="utf-8") as f:
+                config = json.load(f)
+            for language in config:
+                file_name = os.path.join(markdown_path, dir, language + ".md")
+                with open(file_name, "w", encoding="utf-8") as f:
+                    for group in config[language]:
+                        f.write("## " + group + "\n")
+                        match language:
+                            case "zh_CN":
+                                f.write("| 文件名 | 更新时间 | 大小 | 下载地址 |\n")
+                            case "en":
+                                f.write("| File name | Update time | Size | Download address |\n")
 
-        for series in markdown_dict:
-            md_str = ""
-            series_name = series['name']
-            series_path = series['path']
-            for path in series_path:
-                file = all_file[path]
-                match rule['i18n']:
-                    case "zh-CN":
-                        md_str += f"## {path}\n"
-                        md_str += f"|文件名|更新时间|大小|下载地址|\n"
-                        md_str += f"|---|---|---|---|\n"
-
-                    case "en-US":
-                        md_str += f"## {path}\n"
-                        md_str += f"|File Name|Update Time|Size|Download Link|\n"
-                        md_str += f"|---|---|---|---|\n"
-
-                    case _:
-                        md_str += f"## {path}\n"
-                        md_str += f"|文件名|更新时间|大小|下载地址|\n"
-                        md_str += f"|---|---|---|---|\n"
-
-                for f in file:
-                    isBreak = False
-                    for not_rule_path in series['not_rule_path']:
-                        if not_rule_path in path:
-                            isBreak = True
-                            break
-                    if not markdown_file(f, series, rule['i18n']) and not isBreak:
-                        continue
-                    file_name = f
-                    file_path = url + url_encode(path + '/' + f)
-                    file_size = bytes2human(os.path.getsize(os.path.join(OpenPuya.base_path, path, f)))
-                    file_time = time2human(os.path.getmtime(os.path.join(OpenPuya.base_path, path, f)))
-                    md_str += f"|{file_name}|{file_time}|{file_size}|<{file_path}>|\n"
-            markdown_path = os.path.join("markdown", f"{series_name}_{rule['i18n']}.md")
-            if not os.path.exists("markdown"):
-                os.mkdir("markdown")
-            with open(markdown_path, 'w', encoding="utf-8") as f:
-                f.write(md_str)
+                        f.write("| :----: | :----: | :----: | :----: |\n")
+                        for file in config[language][group]:
+                            name = file
+                            update_time = time2human(os.path.getmtime(os.path.join(OpenPuya.base_path, group, file)))
+                            size = bytes2human(os.path.getsize(os.path.join(OpenPuya.base_path, group, file)))
+                            url = base_url + url_encode(group) + "/" + url_encode(file)
+                            f.write(
+                                "| " + name + " | " + update_time + " | " + size + " | " + url + " |\n"
+                            )
+                logging.info("生成markdown文件：" + file_name)
 
 
 if __name__ == '__main__':

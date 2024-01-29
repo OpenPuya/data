@@ -1,0 +1,34 @@
+{
+    "zh_CN": {
+        "Datasheet&Reference manual": [
+            "PY32F070 datasheet Rev.0.1.pdf",
+            "PY32F071 datasheet Rev.0.4.pdf",
+            "PY32F072 datasheet Rev.0.5.pdf",
+            "PY32F07x Reference manual v0.3.pdf"
+        ],
+        "Application Note": [
+            "AN1023_PY32F072应用注意事项.pdf"
+        ],
+        "PACK_IAR": [
+            "Puya.PY32F0xx_IAR_DFP.0.0.2.rar",
+            "如何使用IAR开发调试PY32 MCU V1.0.pdf"
+        ],
+        "PACK_MDK": [
+            "Puya.PY32F0xx_DFP.1.1.0.pack",
+            "PY32F0xx_DFP User Manual Rev.1.0.pdf"
+        ]
+    },
+    "en": {
+        "Datasheet&Reference manual": [
+            "PY32F07x datasheet Rev.0.2_EN.pdf",
+            "PY32F030 Reference manual v1.1_EN_Final.pdf"
+        ],
+        "Application Note": [],
+        "PACK_IAR": [
+            "Puya.PY32F0xx_IAR_DFP.0.0.2.rar"
+        ],
+        "PACK_MDK": [
+            "Puya.PY32F0xx_DFP.1.1.0.pack"
+        ]
+    }
+}
