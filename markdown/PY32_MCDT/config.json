@@ -1,0 +1,15 @@
+{
+    "zh_CN" : {
+        "Tool": [
+            "PY32 Multi Channel Download Tool V1.0.0/PY32MCDT_x86.exe",
+            "PY32 Multi Channel Download Tool V1.0.0/PY32MCDT_x64.exe",
+            "PY32 Multi Channel Download Tool V1.0.0/UM1512_PY32MCDT_用户手册V1.0.pdf"
+        ]
+    },
+    "en": {
+        "Tool": [
+            "PY32 Multi Channel Download Tool V1.0.0/PY32MCDT_x86.exe",
+            "PY32 Multi Channel Download Tool V1.0.0/PY32MCDT_x64.exe"
+        ]
+    }
+}

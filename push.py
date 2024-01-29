@@ -10,6 +10,7 @@ include_path = [
     "Datasheet&Reference manual",
     "PACK_IAR",
     "PACK_MDK",
+    "Tool"
 ]
 
 
@@ -113,6 +114,9 @@ def markdown():
     markdown_path = os.path.join("./", 'markdown')
     for dir in os.listdir(markdown_path):
         if os.path.isdir(os.path.join(markdown_path, dir)):
+            # 如果没有config.json则跳过
+            if not os.path.exists(os.path.join(markdown_path, dir, "config.json")):
+                continue
             # 读取config.json
             with open(os.path.join(markdown_path, dir, "config.json"), encoding="utf-8") as f:
                 config = json.load(f)
@@ -129,7 +133,11 @@ def markdown():
 
                         f.write("| :----: | :----: | :----: | :----: |\n")
                         for file in config[language][group]:
-                            name = file
+                            # 取最后一个'/'后面的字符串作为文件名，如果没有'/'则取全部字符串
+                            if '/' in file:
+                                name = file.split('/')[-1]
+                            else:
+                                name = file
                             update_time = time2human(os.path.getmtime(os.path.join(OpenPuya.base_path, group, file)))
                             size = bytes2human(os.path.getsize(os.path.join(OpenPuya.base_path, group, file)))
                             url = base_url + url_encode(group) + "/" + url_encode(file)

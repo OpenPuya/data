@@ -1,0 +1,14 @@
+{
+    "zh_CN" : {
+        "Tool": [
+            "PY32OptionBytesConfig V1.0.0/PY32OptionBytesConfig_x64.exe",
+            "PY32OptionBytesConfig V1.0.0/PY32OptionBytesConfig_x86.exe"
+        ]
+    },
+    "en": {
+        "Tool": [
+            "PY32OptionBytesConfig V1.0.0/PY32OptionBytesConfig_x64.exe",
+            "PY32OptionBytesConfig V1.0.0/PY32OptionBytesConfig_x86.exe"
+        ]
+    }
+}
