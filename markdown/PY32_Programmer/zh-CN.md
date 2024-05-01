@@ -1,5 +1,5 @@
-## Tool
-| File name | Update time | Size | Download address |
+## 工具
+| 文件名 | 更新时间 | 大小 | 下载地址 |
 | :----: | :----: | :----: | :----: |
 | PuyaProgrammer.exe | 2023-03-15 13:46:51 | 5.6 M | <https://download.py32.org/Tool/en/PuyaProgrammer%20V1.0.0.8/PuyaProgrammer.exe> |
 | PY-LinkUpgrade.exe | 2022-12-19 20:14:43 | 4.0 M | <https://download.py32.org/Tool/en/PuyaProgrammer%20V1.0.0.8/Firmware/PY-LinkUpgrade.exe> |

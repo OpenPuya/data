@@ -1,13 +1,14 @@
 {
-    "zh_CN": {
-        "Datasheet&Reference manual": [
-            "PY32F070 datasheet Rev.0.1.pdf",
-            "PY32F071 datasheet Rev.0.4.pdf",
-            "PY32F072 datasheet Rev.0.5.pdf",
-            "PY32F07x Reference manual v0.3.pdf"
+    "zh-CN": {
+        "数据手册": [
+            "PY32F071系列数据手册_Rev.1.0.pdf",
+            "PY32F072 datasheet Rev.0.5.pdf"
         ],
-        "Application Note": [
-            "AN1023_PY32F072应用注意事项.pdf"
+        "用户手册": [
+            "PY32F07X Reference manual v0.5.pdf"
+        ],
+        "应用笔记": [
+            "AN1033_PY32F071_PY32F072系列应用注意事项 V1.0.pdf"
         ],
         "PACK_IAR": [
             "Puya.PY32F0xx_IAR_DFP.0.0.2.rar",
@@ -19,11 +20,13 @@
         ]
     },
     "en": {
-        "Datasheet&Reference manual": [
-            "PY32F07x datasheet Rev.0.2_EN.pdf",
-            "PY32F030 Reference manual v1.1_EN_Final.pdf"
+        "Datasheet": [
+            "PY32F072 Datasheet Rev.1.0_EN.pdf"
         ],
-        "Application Note": [],
+        "ReferenceManual": [
+            "PY32F07X Reference Manual v0.1_EN.pdf"
+        ],
+        "ApplicationNote": [],
         "PACK_IAR": [
             "Puya.PY32F0xx_IAR_DFP.0.0.2.rar"
         ],

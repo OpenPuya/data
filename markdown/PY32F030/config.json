@@ -1,12 +1,14 @@
 {
-    "zh_CN": {
-        "Datasheet&Reference manual": [
+    "zh-CN": {
+        "数据手册": [
+            "PY32F030 datasheet 105℃ Rev.1.0.pdf",
             "PY32F030 datasheet DFN8L1(1.5-1.5) Rev.0.2.pdf",
-            "PY32F030 datasheet QFN20F3 Rev.1.0.pdf",
-            "PY32F030 datasheet Rev2.0.pdf",
-            "PY32F030 Reference manual v1.1.pdf"
+            "PY32F030 系列数据手册_Rev1.18.pdf"
         ],
-        "Application Note": [
+        "用户手册": [
+            "PY32F030 Reference manual v1.3.pdf"
+        ],
+        "应用笔记": [
             "AN1001_PY32F030_PY32F003_PY32F002A系列_使用LPTIMER将微控器从低功耗模式唤醒.pdf",
             "AN1011_PY32F030_PY32F003_PY32F002A系列_ADC应用注意事项.pdf",
             "AN1012_PY32F030_PY32F003_PY32F002A系列_GPIO应用指南.pdf",
@@ -34,11 +36,13 @@
         ]
     },
     "en": {
-        "Datasheet&Reference manual": [
-            "PY32F030 datasheet Rev.1.4_EN.pdf",
-            "PY32F030 Reference manual v1.1_EN_Final.pdf"
+        "Datasheet": [
+            
         ],
-        "Application Note": [],
+        "ReferenceManual": [
+            
+        ],
+        "ApplicationNote": [],
         "PACK_IAR": [
             "Puya.PY32F0xx_IAR_DFP.0.0.2.rar"
         ],

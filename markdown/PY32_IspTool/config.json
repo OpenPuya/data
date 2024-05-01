@@ -1,9 +1,7 @@
 {
-    "zh_CN" : {
-        "Tool": [
-            "PY32_IspTool_V1.0.0/PY32IspTool_x64.exe",
-            "PY32_IspTool_V1.0.0/PY32IspTool_x86.exe",
-            "PY32_IspTool_V1.0.0/UM1503_PY32IspTool_用户手册V1.0.pdf"
+    "zh-CN" : {
+        "工具": [
+            "en"
         ]
     },
     "en": {

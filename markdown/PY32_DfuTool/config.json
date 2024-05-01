@@ -1,9 +1,7 @@
 {
-    "zh_CN" : {
-        "Tool": [
-            "PY32_DfuTool_V1.0.0/PY32DfuTool_x64.exe",
-            "PY32_DfuTool_V1.0.0/PY32DfuTool_x86.exe",
-            "PY32_DfuTool_V1.0.0/UM1504_PY32DfuTool_用户手册V1.0.pdf"
+    "zh-CN" : {
+        "工具": [
+            "en"
         ]
     },
     "en": {

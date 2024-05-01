@@ -1,15 +1,13 @@
 {
-    "zh_CN": {
-        "Datasheet&Reference manual": [
-            "PY32F003 datasheet DFN8L2 Rev.0.2.pdf",
-            "PY32F003 datasheet MSOP10 Rev.0.1.pdf",
-            "PY32F003 datasheet Rev.1.8.pdf",
-            "PY32F003 datasheet SOP8 Rev.0.2.pdf",
-            "PY32F003 datasheet SOP8L2 Rev.0.1.pdf",
-            "PY32F003 datasheet SOP16 Rev.0.2.pdf",
-            "PY32F003 Reference manual v1.1.pdf"
+    "zh-CN": {
+        "数据手册": [
+            "PY32F003系列数据手册_Rev.2.0.pdf",
+            "PY32F003 datasheet 105℃ Rev.1.1.pdf"
         ],
-        "Application Note": [
+        "用户手册": [
+            "PY32F003 Reference manual v1.4.pdf"
+        ],
+        "应用笔记": [
             "AN1001_PY32F030_PY32F003_PY32F002A系列_使用LPTIMER将微控器从低功耗模式唤醒.pdf",
             "AN1011_PY32F030_PY32F003_PY32F002A系列_ADC应用注意事项.pdf",
             "AN1012_PY32F030_PY32F003_PY32F002A系列_GPIO应用指南.pdf",
@@ -37,8 +35,11 @@
         ]
     },
     "en": {
-        "Datasheet&Reference manual": [
-            "PY32F003 datasheet Rev.1.2_EN.pdf"
+        "Datasheet": [
+            
+        ],
+        "Reference manual": [
+            
         ],
         "Application Note": [],
         "PACK_IAR": [

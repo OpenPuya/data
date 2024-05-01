@@ -1,7 +1,9 @@
-from OP import *
+from OP import OpenPuya, zh_en_map
 import os
 import fnmatch
 import time
+import json
+import logging
 
 base_url = "https://download.py32.org/"
 
@@ -10,7 +12,12 @@ include_path = [
     "Datasheet&Reference manual",
     "PACK_IAR",
     "PACK_MDK",
-    "Tool"
+    "Tool",
+    "工具",
+    "应用方案",
+    "应用笔记",
+    "数据手册",
+    "用户手册"
 ]
 
 
@@ -126,21 +133,56 @@ def markdown():
                     for group in config[language]:
                         f.write("## " + group + "\n")
                         match language:
-                            case "zh_CN":
+                            case "zh-CN":
                                 f.write("| 文件名 | 更新时间 | 大小 | 下载地址 |\n")
                             case "en":
                                 f.write("| File name | Update time | Size | Download address |\n")
 
                         f.write("| :----: | :----: | :----: | :----: |\n")
+
+                        # 如果config内容非空并且第一个元素是en则使用en语言
+                        if config[language][group] != [] and config[language][group][0] == 'en':
+                            language = 'en'
+                            group = zh_en_map[group]
+
                         for file in config[language][group]:
                             # 取最后一个'/'后面的字符串作为文件名，如果没有'/'则取全部字符串
                             if '/' in file:
                                 name = file.split('/')[-1]
                             else:
                                 name = file
-                            update_time = time2human(os.path.getmtime(os.path.join(OpenPuya.base_path, group, file)))
-                            size = bytes2human(os.path.getsize(os.path.join(OpenPuya.base_path, group, file)))
-                            url = base_url + url_encode(group) + "/" + url_encode(file)
+
+                            file = language + '/' + file  # 实际的路径中间还有语言
+
+                            match language:
+                                case "zh-CN":
+                                    real_group = group
+                                case "en":
+                                    # 根据zh_en_map中的值的英文名称取其键
+                                    if group in zh_en_map.values():
+                                        real_group = list(zh_en_map.keys())[list(zh_en_map.values()).index(group)]
+                                    else:
+                                        real_group = group
+                                case _:
+                                    real_group = group
+
+                            update_time = time2human(
+                                os.path.getmtime(os.path.join(OpenPuya.base_path, real_group, file)))
+                            size = bytes2human(os.path.getsize(os.path.join(OpenPuya.base_path, real_group, file)))
+                            # real_group 如果是在zh_en_map中则替换为英文名称
+
+                            match language:
+                                case "zh-CN":
+                                    if group in zh_en_map:
+                                        real_group = zh_en_map[group]
+                                    else:
+                                        real_group = group
+                                case "en":
+                                    real_group = group
+                                case _:
+                                    real_group = group
+
+                            url = base_url + url_encode(real_group) + "/" + url_encode(file)
                             f.write(
                                 f"| {name} | {update_time} | {size} | <{url}> |\n"
                             )

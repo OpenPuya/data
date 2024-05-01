@@ -1,10 +1,7 @@
 {
-    "zh_CN" : {
-        "Tool": [
-            "PuyaProgrammer V1.0.0.8/PuyaProgrammer.exe",
-            "PuyaProgrammer V1.0.0.8/Firmware/PY-LinkUpgrade.exe",
-            "PuyaProgrammer V1.0.0.8/Document/PuyaProgrammer User Manual Rev.1.0.pdf",
-            "PuyaProgrammer V1.0.0.8/Document/PY-LINK User Manual Rev.1.0.pdf"
+    "zh-CN" : {
+        "工具": [
+            "en"
         ]
     },
     "en": {
