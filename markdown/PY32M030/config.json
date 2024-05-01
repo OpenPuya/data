@@ -1,13 +1,13 @@
 {
     "zh-CN": {
         "数据手册": [
-            "PY32L020系列数据手册_Rev1.2.pdf"
+            "PY32M030 datasheet Rev0.2.pdf"
         ],
         "用户手册": [
-            "PY32L020 Reference Manual v0.5.pdf"
+            
         ],
         "应用笔记": [
-            "AN1032_PY32FL020系列应用注意事项 V1.4.pdf"
+            
         ],
         "PACK_IAR": [
             "Puya.PY32F0xx_IAR_DFP.0.0.2.rar",
