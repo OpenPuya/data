@@ -9,4 +9,4 @@ if __name__ == '__main__':
     response = op.get_all_file()
     for file in response:
         # 下载文件
-        op.download(file['Key'])
+        op.download(file)

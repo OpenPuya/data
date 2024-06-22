@@ -72,8 +72,15 @@ def get_all_file(user_path: list = include_path) -> dict:
 
 def push(op: OpenPuya):
     all_file = get_all_file()
+    upstream_file = op.get_all_file()
+    # 处理一下upstream_file中的元素，只保留文件名
+    upstream_file = [file.split('/')[-1] for file in upstream_file]
     for path in all_file:
         for file in all_file[path]:
+            # 判断是否需要上传
+            if file.replace('\\','/').split('/')[-1] in upstream_file:
+                continue
+
             upload_path = os.path.join(op.base_path, path, file)
             op.upload(upload_path)
 

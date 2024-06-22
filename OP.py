@@ -47,17 +47,33 @@ class OpenPuya:
         self.s3.upload_file(local_path, self._bucket_name, remote_path)
 
     def download(self, remote_path: str):
+        real_remote_path = remote_path
+        # 将remote_path按照'/'进行分割，如果第一个路径中有zh_en_map中的英文名称则替换为中文名称
+        remote_path = remote_path.split('/')
+        if remote_path[0] in zh_en_map.values():
+            remote_path[0] = list(zh_en_map.keys())[list(zh_en_map.values()).index(remote_path[0])]
+        remote_path = '/'.join(remote_path)
+        
         local_path = os.path.join(self.base_path, remote_path)
+
         logging.info(f'download {remote_path} to {local_path}')
         # 如果文件夹不存在则创建
         if not os.path.exists(os.path.dirname(local_path)):
             os.makedirs(os.path.dirname(local_path))
-        self.s3.download_file(self._bucket_name, remote_path, local_path)
+        try:
+            self.s3.download_file(self._bucket_name, real_remote_path, local_path)
+        except Exception as e:
+            logging.error(f'error: {e}')
 
     def get_all_file(self):
         response = self.s3.list_objects_v2(Bucket=self._bucket_name)
+        response = response['Contents']
+
+        file = []
+        for obj in response:
+            file.append(obj['Key'])
         try:
-            return response['Contents']
+            return file
         except KeyError:
             print('Bucket is empty')
             return []
