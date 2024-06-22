@@ -1,7 +1,8 @@
 ## Datasheet
 | File name | Update time | Size | Download address |
 | :----: | :----: | :----: | :----: |
-| PY32F072 Datasheet Rev.1.0_EN.pdf | 2024-03-24 02:59:17 | 7.3 M | <https://download.py32.org/Datasheet/en/PY32F072%20Datasheet%20Rev.1.0_EN.pdf> |
+| PY32F071_Datasheet_Rev0.7_EN.pdf | 2024-06-22 23:50:29 | 3.1 M | <https://download.py32.org/Datasheet/en/PY32F071_Datasheet_Rev0.7_EN.pdf> |
+| PY32F072_Datasheet_Rev1.1_EN.pdf | 2024-06-13 19:15:02 | 2.7 M | <https://download.py32.org/Datasheet/en/PY32F072_Datasheet_Rev1.1_EN.pdf> |
 ## ReferenceManual
 | File name | Update time | Size | Download address |
 | :----: | :----: | :----: | :----: |
@@ -9,11 +10,3 @@
 ## ApplicationNote
 | File name | Update time | Size | Download address |
 | :----: | :----: | :----: | :----: |
-## PACK_IAR
-| File name | Update time | Size | Download address |
-| :----: | :----: | :----: | :----: |
-| Puya.PY32F0xx_IAR_DFP.0.0.2.rar | 2022-10-20 17:15:59 | 104.9 K | <https://download.py32.org/PACK_IAR/en/Puya.PY32F0xx_IAR_DFP.0.0.2.rar> |
-## PACK_MDK
-| File name | Update time | Size | Download address |
-| :----: | :----: | :----: | :----: |
-| Puya.PY32F0xx_DFP.1.1.0.pack | 2022-10-20 17:15:59 | 19.3 M | <https://download.py32.org/PACK_MDK/en/Puya.PY32F0xx_DFP.1.1.0.pack> |

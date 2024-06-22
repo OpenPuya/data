@@ -1,52 +1,38 @@
 {
     "zh-CN": {
         "数据手册": [
-            "PY32F003系列数据手册_Rev.2.0.pdf",
+            "PY32F003系列数据手册_V2.3.pdf",
             "PY32F003 datasheet 105℃ Rev.1.1.pdf"
         ],
         "用户手册": [
             "PY32F003 Reference manual v1.4.pdf"
         ],
         "应用笔记": [
-            "AN1001_PY32F030_PY32F003_PY32F002A系列_使用LPTIMER将微控器从低功耗模式唤醒.pdf",
-            "AN1011_PY32F030_PY32F003_PY32F002A系列_ADC应用注意事项.pdf",
-            "AN1012_PY32F030_PY32F003_PY32F002A系列_GPIO应用指南.pdf",
-            "AN1013_PY32F030_PY32F003_PY32F002A系列_USART硬件自动波特率检测.pdf",
-            "AN1014_PY32F030_PY32F003_PY32F002A系列_SPI的应用注意事项.pdf",
-            "AN1015_PY32F030_PY32F003_PY32F002A系列_I2C应用注意事项.pdf",
-            "AN1017_PY32F030_PY32F003_PY32F002A系列_使用CRC计算单元进行数据校验.pdf",
-            "AN1018_PY32F030_PY32F003_PY32F002A系列_如何使用RCC复位和时钟控制模块..pdf",
-            "AN1021_PY32F030_PY32F003系列_使用RTC实时时钟模块.pdf",
-            "AN1022_PY32F030_PY32F003_PY32F002A系列_如何使用WDG看门狗模块.pdf",
-            "AN1024_PY32F030_PY32F003系列_如何使用LED控制器模块.pdf",
-            "AN1027_PY32F030_PY32F003_PY32F002A系列_关于低功耗特性概览.pdf",
-            "AN1029_PY32F030_PY32F003系列_内部HSI校准应用笔记.pdf",
-            "ANSA-1001 PY32F030系列应用指南 V1.2.pdf",
-            "ANSA-1002 PY32F030系列中断向量映射应用指南 V1.0.pdf",
-            "PY32F030_PY32F003 FAQ V1.0.pdf"
-        ],
-        "PACK_IAR": [
-            "Puya.PY32F0xx_IAR_DFP.0.0.2.rar",
-            "如何使用IAR开发调试PY32 MCU V1.0.pdf"
-        ],
-        "PACK_MDK": [
-            "Puya.PY32F0xx_DFP.1.1.0.pack",
-            "PY32F0xx_DFP User Manual Rev.1.0.pdf"
-        ]
+            "AN1002_PY32F030_003_002A系列中断向量映射应用指南 V1.1.pdf",
+            "AN1011_PY32F030_003_002A系列_ADC应用注意事项 V1.1.pdf",
+            "AN1012_PY32F030_003_002A系列_GPIO在应用中的IO响应速度和输入模式的约束V1.1.pdf",
+            "AN1013_PY32F030_003_002A系列USART硬件自动波特率检测V1.1.pdf",
+            "AN1014_PY32F030_003_002A系列_SPI的应用注意事项V1.1.pdf",
+            "AN1015_PY32F030_003_002A系列_I2C应用注意事项 V1.1.pdf",
+            "AN1017_PY32F030_003_002A系列_使用CRC计算单元进行数据校验 V1.1.pdf",
+            "AN1018_PY32F030_003_002A系列_如何使用RCC复位和时钟控制模块 V1.1.pdf",
+            "AN1021_PY32F030_003系列_使用RTC实时时钟模块 V1.1.pdf",
+            "AN1022_PY32F030_003_002A系列_如何使用WDG看门狗模块 V1.1.pdf",
+            "AN1024_PY32F030_003_002A系列_如何使用LED控制器模块 V1.1.pdf",
+            "AN1027_PY32F030_003_002A系列_关于低功耗特性概览V1.1.pdf",
+            "AN1028_PY32F030_003_002A系列_使用LPTIMER将微控器从低功耗模式唤醒 V1.1.pdf",
+            "AN1029_PY32F030_003_002A系列_内部HSI校准应用笔记 V1.1.pdf",
+            "AN1053 PY32Fxxxx系列电子烟应用指南 V1.2.pdf",
+            "AN1065_PY32F030_003_002A系列_应用注意事项V1.0.pdf"
+          ]
     },
     "en": {
         "Datasheet": [
-            
+            "PY32F003_Datasheet_Rev1.7.pdf"
         ],
-        "Reference manual": [
-            
+        "ReferenceManual": [
+            "PY32F003 Reference manual v1.1_EN.pdf"
         ],
-        "Application Note": [],
-        "PACK_IAR": [
-            "Puya.PY32F0xx_IAR_DFP.0.0.2.rar"
-        ],
-        "PACK_MDK": [
-            "Puya.PY32F0xx_DFP.1.1.0.pack"
-        ]
+        "Application Note": []
     }
 }

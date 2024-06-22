@@ -8,14 +8,6 @@
         ],
         "应用笔记": [
             
-        ],
-        "PACK_IAR": [
-            "Puya.PY32F0xx_IAR_DFP.0.0.2.rar",
-            "如何使用IAR开发调试PY32 MCU V1.0.pdf"
-        ],
-        "PACK_MDK": [
-            "Puya.PY32F0xx_DFP.1.1.0.pack",
-            "PY32F0xx_DFP User Manual Rev.1.0.pdf"
         ]
     },
     "en": {
@@ -25,12 +17,6 @@
         "ReferenceManual": [
             
         ],
-        "ApplicationNote": [],
-        "PACK_IAR": [
-            "Puya.PY32F0xx_IAR_DFP.0.0.2.rar"
-        ],
-        "PACK_MDK": [
-            "Puya.PY32F0xx_DFP.1.1.0.pack"
-        ]
+        "ApplicationNote": []
     }
 }

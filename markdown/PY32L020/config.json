@@ -8,29 +8,15 @@
         ],
         "应用笔记": [
             "AN1032_PY32FL020系列应用注意事项 V1.4.pdf"
-        ],
-        "PACK_IAR": [
-            "Puya.PY32F0xx_IAR_DFP.0.0.2.rar",
-            "如何使用IAR开发调试PY32 MCU V1.0.pdf"
-        ],
-        "PACK_MDK": [
-            "Puya.PY32F0xx_DFP.1.1.0.pack",
-            "PY32F0xx_DFP User Manual Rev.1.0.pdf"
         ]
     },
     "en": {
         "Datasheet": [
-            
+            "PY32L020_Datasheet_Rev1.1_EN.pdf"
         ],
         "ReferenceManual": [
-            
+            "PY32L020 Reference Manual v0.2_EN .pdf"
         ],
-        "ApplicationNote": [],
-        "PACK_IAR": [
-            "Puya.PY32F0xx_IAR_DFP.0.0.2.rar"
-        ],
-        "PACK_MDK": [
-            "Puya.PY32F0xx_DFP.1.1.0.pack"
-        ]
+        "ApplicationNote": []
     }
 }
