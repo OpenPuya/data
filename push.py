@@ -51,21 +51,30 @@ def markdown_file(f: str, series: dict, i18n: str = "en-US") -> bool:
 
 def get_all_file(user_path: list = include_path) -> dict:
     all_file = {}
+
+    def ignore_file(file: str) -> bool:
+        for ignore in get_ignore():
+            if fnmatch.fnmatch(file, ignore):
+                return True
+        return False
+
     for path in user_path:
         all_file[path] = []
         file_path = os.path.join(OpenPuya.base_path, path)
         for file in os.listdir(file_path):
             # 判断是否在忽略列表中，支持通配符
-            if any(fnmatch.fnmatch(file, ignore) for ignore in get_ignore()):
+            if ignore_file(file):
                 continue
+
             if os.path.isfile(os.path.join(file_path, file)):
                 all_file[path].append(file)
-            else:
-                for root, dirs, files in os.walk(os.path.join(file_path, file)):
-                    for f in files:
-                        if any(fnmatch.fnmatch(file, ignore) for ignore in get_ignore()):
-                            continue
-                        all_file[path].append(os.path.join(root, f).replace(file_path + "\\", ""))
+                continue
+
+            for root, dirs, files in os.walk(os.path.join(file_path, file)):
+                for f in files:
+                    if ignore_file(f):
+                        continue
+                    all_file[path].append(os.path.join(root, f).replace(file_path + "\\", ""))
 
     return all_file
 
@@ -78,7 +87,7 @@ def push(op: OpenPuya):
     for path in all_file:
         for file in all_file[path]:
             # 判断是否需要上传
-            if file.replace('\\','/').split('/')[-1] in upstream_file:
+            if file.replace('\\', '/').split('/')[-1] in upstream_file:
                 continue
 
             upload_path = os.path.join(op.base_path, path, file)
